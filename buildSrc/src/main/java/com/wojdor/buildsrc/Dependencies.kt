@@ -1,0 +1,52 @@
+package com.wojdor.buildsrc
+
+object Application {
+    val id = "com.wojdor.polygonwatchface"
+    val versionCode = 1
+    val versionName = "1.0"
+    val compileSdk = 29
+    val minSdk = 23
+    val targetSdk = 29
+}
+
+object Version {
+    val appcompat = "1.2.0"
+    val constraintLayout = "1.1.3"
+    val core = "1.3.1"
+    val gradle = "4.0.1"
+    val junit = "4.12"
+    val junitExtension = "1.1.1"
+    val kotlin = "1.3.72"
+    val legacySupport = "1.0.0"
+    val recyclerView = "1.1.0"
+    val palette = "1.0.0"
+    val percentLayout = "1.0.0"
+    val playServices = "17.3.0"
+    val playServicesWearable = "17.0.0"
+    val wearable = "2.7.0"
+}
+
+object Library {
+    object Android {
+        val appcompat = "androidx.appcompat:appcompat:${Version.appcompat}"
+        val core = "androidx.core:core-ktx:${Version.core}"
+        val constraintLayout =
+            "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+        val legacySupport = "androidx.legacy:legacy-support-v4:${Version.legacySupport}"
+        val recyclerView = "androidx.recyclerview:recyclerview:${Version.recyclerView}"
+        val palette = "androidx.palette:palette:${Version.palette}"
+        val percentLayout = "androidx.percentlayout:percentlayout:${Version.percentLayout}"
+        val playServices = "com.google.android.gms:play-services-base:${Version.playServices}"
+        val playServicesWearable =
+            "com.google.android.gms:play-services-wearable:${Version.playServicesWearable}"
+        val wearable = "com.google.android.wearable:wearable:${Version.wearable}"
+        val wearableSupport = "com.google.android.support:wearable:${Version.wearable}"
+    }
+
+    object Test {
+        val junit = "junit:junit:${Version.junit}"
+        val junitExtension = "androidx.test.ext:junit:${Version.junitExtension}"
+    }
+
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
+}
