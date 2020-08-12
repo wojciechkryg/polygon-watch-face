@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Polygon Watch Face</string>
+    <string name="watch_face_name">Polygon</string>
     <string name="message">Watch face tapped</string>
-    <string name="my_analog_name">My Analog</string>
 </resources>
