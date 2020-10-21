@@ -34,5 +34,7 @@ dependencies {
     implementation Library.kotlin
     testImplementation Library.Test.junit
     androidTestImplementation Library.Test.junitExtension
-    wearApp project(":wear")
+    wearApp project(Module.wear)
+    implementation project(path: Module.common)
+    implementation project(path: Module.commonAndroid)
 }

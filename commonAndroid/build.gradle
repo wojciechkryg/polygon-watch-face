@@ -1,6 +1,6 @@
 import com.wojdor.buildsrc.*
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -8,11 +8,13 @@ android {
     compileSdkVersion Application.compileSdk
 
     defaultConfig {
-        applicationId Application.id
         minSdkVersion Application.minSdk
         targetSdkVersion Application.targetSdk
         versionCode Application.versionCode
         versionName Application.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -25,16 +27,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation Library.kotlin
+    implementation Library.Android.appcompat
     implementation Library.Android.core
-    implementation Library.Android.legacySupport
-    implementation Library.Android.percentLayout
-    implementation Library.Android.playServices
-    implementation Library.Android.playServicesWearable
-    implementation Library.Android.recyclerView
-    compileOnly Library.Android.wearable
-    implementation Library.Android.wearableSupport
-    wearApp project(Module.wear)
+    implementation Library.kotlin
+    testImplementation Library.Test.junit
+    androidTestImplementation Library.Test.junitExtension
     implementation project(path: Module.common)
-    implementation project(path: Module.commonAndroid)
 }

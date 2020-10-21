@@ -7,6 +7,8 @@ object Application {
     val compileSdk = 29
     val minSdk = 23
     val targetSdk = 29
+    val sourceCompatibility = "1.7"
+    val targetCompatibility = "1.7"
 }
 
 object Version {
@@ -19,7 +21,6 @@ object Version {
     val kotlin = "1.3.72"
     val legacySupport = "1.0.0"
     val recyclerView = "1.1.0"
-    val palette = "1.0.0"
     val percentLayout = "1.0.0"
     val playServices = "17.3.0"
     val playServicesWearable = "17.0.0"
@@ -34,7 +35,6 @@ object Library {
             "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
         val legacySupport = "androidx.legacy:legacy-support-v4:${Version.legacySupport}"
         val recyclerView = "androidx.recyclerview:recyclerview:${Version.recyclerView}"
-        val palette = "androidx.palette:palette:${Version.palette}"
         val percentLayout = "androidx.percentlayout:percentlayout:${Version.percentLayout}"
         val playServices = "com.google.android.gms:play-services-base:${Version.playServices}"
         val playServicesWearable =
@@ -48,5 +48,12 @@ object Library {
         val junitExtension = "androidx.test.ext:junit:${Version.junitExtension}"
     }
 
-    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
+}
+
+object Module {
+    val common = ":common"
+    val commonAndroid = ":commonAndroid"
+    val mobile = ":mobile"
+    val wear = ":wear"
 }
