@@ -1,4 +1,4 @@
-package com.wojdor.myapplication
+package com.wojdor.polygonwatchface
 
 import org.junit.Test
 

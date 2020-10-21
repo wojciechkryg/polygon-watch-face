@@ -1,4 +1,4 @@
-package com.wojdor.myapplication
+package com.wojdor.polygonwatchface
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

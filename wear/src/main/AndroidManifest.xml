@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wojdor.myapplication">
+    package="com.wojdor.polygonwatchface">
 
-    <!-- Required to act as a custom watch face. -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +17,7 @@
             android:value="@integer/google_play_services_version" />
 
         <service
-            android:name=".MyWatchFace"
+            android:name="com.wojdor.polygonwatchface.PolygonWatchFaceService"
             android:label="@string/watch_face_name"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
@@ -40,7 +39,6 @@
         </service>
     </application>
 
-    <!-- Required for complications to receive complication data and open the provider chooser. -->
     <uses-feature android:name="android.hardware.type.watch" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
