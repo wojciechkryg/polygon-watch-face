@@ -1,4 +1,5 @@
-import com.wojdor.buildsrc.*
+import com.wojdor.buildsrc.Application
+import com.wojdor.buildsrc.Library
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
@@ -6,6 +7,7 @@ apply plugin: 'kotlin'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Library.kotlin
+    testImplementation Library.Test.junit
 }
 
 sourceCompatibility = Application.sourceCompatibility

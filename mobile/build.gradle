@@ -1,4 +1,6 @@
-import com.wojdor.buildsrc.*
+import com.wojdor.buildsrc.Application
+import com.wojdor.buildsrc.Library
+import com.wojdor.buildsrc.Module
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
