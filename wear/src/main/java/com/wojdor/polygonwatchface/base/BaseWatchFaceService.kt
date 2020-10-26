@@ -13,7 +13,6 @@ import android.support.wearable.watchface.WatchFaceStyle
 import android.text.format.DateFormat
 import android.view.SurfaceHolder
 import android.view.WindowInsets
-import com.wojdor.common.extension.toMinTwoDigitString
 import com.wojdor.polygonwatchface.base.BaseEngineHandler.Companion.MESSAGE_UPDATE_TIME
 import java.util.*
 
@@ -55,12 +54,6 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
     fun getSeconds() = calendar[Calendar.SECOND]
 
     fun getMilliseconds() = calendar[Calendar.MILLISECOND]
-
-    fun getDigitalHoursText() = getDigitalHours().toMinTwoDigitString()
-
-    fun getMinutesText() = getMinutes().toMinTwoDigitString()
-
-    fun getSecondsText() = getSeconds().toMinTwoDigitString()
 
     override fun onCreateEngine() = Engine()
 

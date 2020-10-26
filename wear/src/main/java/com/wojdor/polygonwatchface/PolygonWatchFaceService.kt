@@ -1,13 +1,10 @@
 package com.wojdor.polygonwatchface
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Typeface
-import com.wojdor.polygonwatchface.base.BaseWatchFaceService
+import android.graphics.*
+import com.wojdor.polygonwatchface.base.BaseDigitalWatchFaceService
 import java.util.concurrent.TimeUnit
 
-class PolygonWatchFaceService : BaseWatchFaceService() {
+class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
 
     private val timePaint = Paint().apply {
         color = TIME_INTERACTIVE_COLOR
@@ -33,7 +30,9 @@ class PolygonWatchFaceService : BaseWatchFaceService() {
 
     override fun drawWatchFace(canvas: Canvas) {
         canvas.drawText(
-            "${getDigitalHoursText()} : ${getMinutesText()} : ${getSecondsText()}",
+            "${getFirstDigitOfHours()} ${getSecondDigitOfHours()} : " +
+                    "${getFirstDigitOfMinutes()} ${getSecondDigitOfMinutes()} : " +
+                    "${getFirstDigitOfSeconds()} ${getSecondDigitOfSeconds()}",
             xOffset,
             yOffset,
             timePaint
