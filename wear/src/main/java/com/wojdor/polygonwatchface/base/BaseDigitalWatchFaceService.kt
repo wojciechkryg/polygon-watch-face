@@ -1,16 +1,36 @@
 package com.wojdor.polygonwatchface.base
 
+import android.graphics.PointF
+
 abstract class BaseDigitalWatchFaceService : BaseWatchFaceService() {
 
-    fun getFirstDigitOfHours() = getDigitalHours() / 10
+    val hoursFirstDigit get() = digitalHours / 10
+    val hoursSecondDigit get() = digitalHours % 10
+    val minutesFirstDigit get() = minutes / 10
+    val minutesSecondDigit get() = minutes % 10
+    val secondsFirstDigit get() = seconds / 10
+    val secondsSecondDigit get() = seconds % 10
+    val topLeftQuarterCenter = PointF()
+    val topRightQuarterCenter = PointF()
+    val bottomLeftQuarterCenter = PointF()
+    val bottomRightQuarterCenter = PointF()
 
-    fun getSecondDigitOfHours() = getDigitalHours() % 10
-
-    fun getFirstDigitOfMinutes() = getMinutes() / 10
-
-    fun getSecondDigitOfMinutes() = getMinutes() % 10
-
-    fun getFirstDigitOfSeconds() = getSeconds() / 10
-
-    fun getSecondDigitOfSeconds() = getSeconds() % 10
+    override fun onSurfaceChanged() {
+        with(topLeftQuarterCenter) {
+            x = width / 10F * 3
+            y = height / 10F * 3
+        }
+        with(topRightQuarterCenter) {
+            x = width / 10F * 7
+            y = height / 10F * 3
+        }
+        with(bottomLeftQuarterCenter) {
+            x = width / 10F * 3
+            y = height / 10F * 7
+        }
+        with(bottomRightQuarterCenter) {
+            x = width / 10F * 7
+            y = height / 10F * 7
+        }
+    }
 }

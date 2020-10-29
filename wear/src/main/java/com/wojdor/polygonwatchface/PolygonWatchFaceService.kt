@@ -20,19 +20,15 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     private var timeAmbientColor = 0
     private var backgroundInteractiveColor = 0
     private var backgroundAmbientColor = 0
-    private var xOffset = 0F
-    private var yOffset = 0F
 
     override val interactiveUpdateIntervalInMilliseconds = TimeUnit.SECONDS.toMillis(1)
 
     override fun onEngineInit() {
         with(resources) {
-            xOffset = getDimension(if (isRound) R.dimen.x_offset_round else R.dimen.x_offset)
-            yOffset = getDimension(R.dimen.y_offset)
             backgroundInteractiveColor = getColor(R.color.black, theme)
             backgroundAmbientColor = getColor(R.color.black, theme)
-            timeInteractiveColor = getColor(R.color.white, theme)
-            timeAmbientColor = getColor(R.color.white, theme)
+            timeInteractiveColor = getColor(R.color.red_shade_400, theme)
+            timeAmbientColor = getColor(R.color.red_shade_400, theme)
         }
         with(timePaint) {
             color = timeInteractiveColor
@@ -48,7 +44,10 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     }
 
     override fun drawWatchFace(canvas: Canvas) {
-        drawDigit(canvas, PointF(center.x, center.y), getSecondDigitOfSeconds())
+        drawDigit(canvas, topLeftQuarterCenter, hoursFirstDigit)
+        drawDigit(canvas, topRightQuarterCenter, hoursSecondDigit)
+        drawDigit(canvas, bottomLeftQuarterCenter, minutesFirstDigit)
+        drawDigit(canvas, bottomRightQuarterCenter, minutesSecondDigit)
     }
 
     override fun onAmbientModeChanged() {
@@ -126,8 +125,8 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     }
 
     companion object {
-        private const val PAINT_RADIUS = 80F // TODO: Should be deviceWidth / 12
-        private const val PAINT_WIDTH = 3F // TODO: Should be deviceWidth / 60
-        private const val DOT_WIDTH = 5F // TODO: Use deviceWidth
+        private const val PAINT_RADIUS = 60F // TODO: Use deviceWidth / 7
+        private const val PAINT_WIDTH = 3F // TODO: Use deviceWidth / 139
+        private const val DOT_WIDTH = 10F // TODO: Use deviceWidth / 42
     }
 }

@@ -21,13 +21,27 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
     abstract val interactiveUpdateIntervalInMilliseconds: Long
 
-    protected var isRound = false
+    var isRound = false
         private set
-    protected val center = PointF()
-    protected var isAmbient = false
+    var width = 0
         private set
-    protected val isAmbientWithProtection
-        get() = isAmbient && (isLowBitAmbient || isBurnInProtection)
+    var height = 0
+        private set
+    val center = PointF()
+    var isAmbient = false
+        private set
+    val isAmbientWithProtection get() = isAmbient && (isLowBitAmbient || isBurnInProtection)
+    val digitalHours
+        get() = if (DateFormat.is24HourFormat(this)) {
+            calendar[Calendar.HOUR_OF_DAY]
+        } else {
+            val hour = calendar[Calendar.HOUR]
+            if (hour == 0) 12 else hour
+        }
+    val analogHours get() = calendar[Calendar.HOUR]
+    val minutes get() = calendar[Calendar.MINUTE]
+    val seconds get() = calendar[Calendar.SECOND]
+    val milliseconds get() = calendar[Calendar.MILLISECOND]
 
     private var isLowBitAmbient = false
     private var isBurnInProtection = false
@@ -38,20 +52,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
     abstract fun drawWatchFace(canvas: Canvas)
     abstract fun onAmbientModeChanged()
 
-    fun getDigitalHours() = if (DateFormat.is24HourFormat(this)) {
-        calendar[Calendar.HOUR_OF_DAY]
-    } else {
-        val hour = calendar[Calendar.HOUR]
-        if (hour == 0) 12 else hour
-    }
-
-    fun getAnalogHours() = calendar[Calendar.HOUR]
-
-    fun getMinutes() = calendar[Calendar.MINUTE]
-
-    fun getSeconds() = calendar[Calendar.SECOND]
-
-    fun getMilliseconds() = calendar[Calendar.MILLISECOND]
+    internal open fun onSurfaceChanged() {}
 
     override fun onCreateEngine() = Engine()
 
@@ -110,8 +111,13 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
         override fun onSurfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
             super.onSurfaceChanged(holder, format, width, height)
-            center.x = width / 2f
-            center.y = height / 2f
+            this@BaseWatchFaceService.width = width
+            this@BaseWatchFaceService.height = height
+            with(center) {
+                x = width / 2F
+                y = height / 2F
+            }
+            onSurfaceChanged()
         }
 
         override fun onDraw(canvas: Canvas, bounds: Rect) {
