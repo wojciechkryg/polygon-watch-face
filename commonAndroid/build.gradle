@@ -33,6 +33,7 @@ dependencies {
     implementation Library.Android.core
     implementation Library.kotlin
     testImplementation Library.Test.junit
+    testImplementation Library.Test.mockk
     androidTestImplementation Library.Test.junitExtension
     implementation project(path: Module.common)
 }

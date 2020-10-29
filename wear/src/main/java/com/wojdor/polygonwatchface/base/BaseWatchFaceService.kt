@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Canvas
+import android.graphics.PointF
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.wearable.watchface.CanvasWatchFaceService
@@ -22,10 +23,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
     protected var isRound = false
         private set
-    protected var centerX = 0F
-        private set
-    protected var centerY = 0F
-        private set
+    protected val center = PointF()
     protected var isAmbient = false
         private set
     protected val isAmbientWithProtection
@@ -112,8 +110,8 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
         override fun onSurfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
             super.onSurfaceChanged(holder, format, width, height)
-            centerX = width / 2f
-            centerY = height / 2f
+            center.x = width / 2f
+            center.y = height / 2f
         }
 
         override fun onDraw(canvas: Canvas, bounds: Rect) {

@@ -20,6 +20,7 @@ object Version {
     val junitExtension = "1.1.1"
     val kotlin = "1.3.72"
     val legacySupport = "1.0.0"
+    val mockk = "1.10.2"
     val recyclerView = "1.1.0"
     val percentLayout = "1.0.0"
     val playServices = "17.3.0"
@@ -46,6 +47,7 @@ object Library {
     object Test {
         val junit = "junit:junit:${Version.junit}"
         val junitExtension = "androidx.test.ext:junit:${Version.junitExtension}"
+        val mockk = "io.mockk:mockk:${Version.mockk}"
     }
 
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
