@@ -14,6 +14,9 @@ import kotlin.math.sin
 
 class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
 
+    private var dotRadius = 0F
+    private var digitRadius = 0F
+    private var paintWidth = 0F
     private val timePaint = Paint()
     private var backgroundColor = 0
     private var timeInteractiveColor = 0
@@ -21,9 +24,12 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     private var backgroundInteractiveColor = 0
     private var backgroundAmbientColor = 0
 
-    override val interactiveUpdateIntervalInMilliseconds = TimeUnit.SECONDS.toMillis(1)
+    override val interactiveUpdateIntervalInMilliseconds = TimeUnit.MINUTES.toMillis(1)
 
     override fun onEngineInit() {
+        dotRadius = width / DOT_RADIUS_RATIO
+        digitRadius = width / DIGIT_RADIUS_RATIO
+        paintWidth = width / PAINT_WIDTH_RATIO
         with(resources) {
             backgroundInteractiveColor = getColor(R.color.black, theme)
             backgroundAmbientColor = getColor(R.color.black, theme)
@@ -32,7 +38,7 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
         }
         with(timePaint) {
             color = timeInteractiveColor
-            strokeWidth = PAINT_WIDTH
+            strokeWidth = paintWidth
             isAntiAlias = true
             style = Paint.Style.FILL
         }
@@ -66,7 +72,7 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     }
 
     private fun drawDot(canvas: Canvas, point: PointF) {
-        canvas.drawCircle(point, DOT_WIDTH, timePaint)
+        canvas.drawCircle(point, dotRadius, timePaint)
     }
 
     private fun drawVerticalRoundedLine(canvas: Canvas, point: PointF) {
@@ -75,12 +81,12 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
 
     private fun createVerticalRoundedLinePath(point: PointF) = Path().apply {
         addRoundRect(
-            point.x - DOT_WIDTH / 2,
-            point.y + PAINT_RADIUS - DOT_WIDTH / 2,
-            point.x + DOT_WIDTH / 2,
-            point.y - PAINT_RADIUS + DOT_WIDTH / 2,
-            DOT_WIDTH / 2,
-            DOT_WIDTH / 2,
+            point.x - dotRadius / 2,
+            point.y + digitRadius - dotRadius / 2,
+            point.x + dotRadius / 2,
+            point.y - digitRadius + dotRadius / 2,
+            dotRadius / 2,
+            dotRadius / 2,
             Path.Direction.CW
         )
     }
@@ -93,13 +99,13 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
         val startAngle = 1.5
         var angle = startAngle * Math.PI
         val angleIncrement = 2 * Math.PI / digit
-        var x = point.x + PAINT_RADIUS * cos(angle)
-        var y = point.y + PAINT_RADIUS * sin(angle)
+        var x = point.x + digitRadius * cos(angle)
+        var y = point.y + digitRadius * sin(angle)
         return Path().apply {
             moveTo(x, y)
             for (i in 0..digit) {
-                x = point.x + PAINT_RADIUS * cos(angle)
-                y = point.y + PAINT_RADIUS * sin(angle)
+                x = point.x + digitRadius * cos(angle)
+                y = point.y + digitRadius * sin(angle)
                 lineTo(x, y)
                 angle += angleIncrement
             }
@@ -125,8 +131,8 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     }
 
     companion object {
-        private const val PAINT_RADIUS = 60F // TODO: Use deviceWidth / 7
-        private const val PAINT_WIDTH = 3F // TODO: Use deviceWidth / 139
-        private const val DOT_WIDTH = 10F // TODO: Use deviceWidth / 42
+        private const val PAINT_WIDTH_RATIO = 139F
+        private const val DIGIT_RADIUS_RATIO = 7F
+        private const val DOT_RADIUS_RATIO = 42F
     }
 }
