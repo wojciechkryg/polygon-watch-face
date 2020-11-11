@@ -1,4 +1,4 @@
-package com.wojdor.polygonwatchface
+package com.wojdor.polygonwatchface.watchface.basic
 
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -7,13 +7,16 @@ import android.graphics.PointF
 import com.wojdor.commonandroid.extension.drawCircle
 import com.wojdor.commonandroid.extension.lineTo
 import com.wojdor.commonandroid.extension.moveTo
+import com.wojdor.polygonwatchface.R
 import com.wojdor.polygonwatchface.base.BaseDigitalWatchFaceService
+import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
 import kotlin.math.cos
 import kotlin.math.sin
 
-class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
+class BasicWatchFaceService : BaseDigitalWatchFaceService() {
 
+    private val configurationRepository: BasicConfigurationRepository by inject()
     private var dotRadius = 0F
     private var digitRadius = 0F
     private var paintWidth = 0F
@@ -40,7 +43,8 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
             color = timeInteractiveColor
             strokeWidth = paintWidth
             isAntiAlias = true
-            style = Paint.Style.FILL
+            style =
+                if (configurationRepository.isAlwaysOutline) Paint.Style.STROKE else Paint.Style.FILL_AND_STROKE
         }
         backgroundColor = backgroundInteractiveColor
     }
@@ -57,6 +61,16 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
     }
 
     override fun onAmbientModeChanged() {
+        updatePaints()
+    }
+
+    override fun onVisibilityChanged(isVisible: Boolean) {
+        if (isVisible) {
+            updatePaints()
+        }
+    }
+
+    private fun updatePaints() {
         when {
             isAmbient -> setupAmbientPaints()
             else -> setupInteractivePaints()
@@ -125,7 +139,8 @@ class PolygonWatchFaceService : BaseDigitalWatchFaceService() {
         backgroundColor = backgroundInteractiveColor
         with(timePaint) {
             color = timeInteractiveColor
-            style = Paint.Style.FILL_AND_STROKE
+            style =
+                if (configurationRepository.isAlwaysOutline) Paint.Style.STROKE else Paint.Style.FILL_AND_STROKE
             isAntiAlias = true
         }
     }

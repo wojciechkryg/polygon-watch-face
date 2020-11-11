@@ -23,10 +23,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    kotlinOptions {
+        jvmTarget = Application.targetCompatibility
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation Library.koin
     implementation Library.kotlin
     implementation Library.Android.core
     implementation Library.Android.legacySupport
@@ -34,6 +39,7 @@ dependencies {
     implementation Library.Android.playServices
     implementation Library.Android.playServicesWearable
     implementation Library.Android.recyclerView
+    implementation Library.Android.wear
     compileOnly Library.Android.wearable
     implementation Library.Android.wearableSupport
     implementation project(path: Module.common)

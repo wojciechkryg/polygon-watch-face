@@ -7,8 +7,8 @@ object Application {
     val compileSdk = 29
     val minSdk = 23
     val targetSdk = 29
-    val sourceCompatibility = "1.7"
-    val targetCompatibility = "1.7"
+    val sourceCompatibility = "1.8"
+    val targetCompatibility = "1.8"
 }
 
 object Version {
@@ -18,6 +18,7 @@ object Version {
     val gradle = "4.0.1"
     val junit = "4.12"
     val junitExtension = "1.1.1"
+    val koin = "2.1.6"
     val kotlin = "1.3.72"
     val legacySupport = "1.0.0"
     val mockk = "1.10.2"
@@ -25,6 +26,7 @@ object Version {
     val percentLayout = "1.0.0"
     val playServices = "17.3.0"
     val playServicesWearable = "17.0.0"
+    val wear = "1.1.0"
     val wearable = "2.7.0"
 }
 
@@ -40,6 +42,7 @@ object Library {
         val playServices = "com.google.android.gms:play-services-base:${Version.playServices}"
         val playServicesWearable =
             "com.google.android.gms:play-services-wearable:${Version.playServicesWearable}"
+        val wear = "androidx.wear:wear:${Version.wear}"
         val wearable = "com.google.android.wearable:wearable:${Version.wearable}"
         val wearableSupport = "com.google.android.support:wearable:${Version.wearable}"
     }
@@ -50,6 +53,7 @@ object Library {
         val mockk = "io.mockk:mockk:${Version.mockk}"
     }
 
+    val koin = "org.koin:koin-android:${Version.koin}"
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
 }
 

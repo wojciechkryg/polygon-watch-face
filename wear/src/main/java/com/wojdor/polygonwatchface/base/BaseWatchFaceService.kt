@@ -52,6 +52,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
     abstract fun drawWatchFace(canvas: Canvas)
     abstract fun onAmbientModeChanged()
 
+    internal open fun onVisibilityChanged(isVisible: Boolean) {}
     internal open fun onSurfaceChanged() {}
 
     override fun onCreateEngine() = Engine()
@@ -128,6 +129,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
         override fun onVisibilityChanged(visible: Boolean) {
             super.onVisibilityChanged(visible)
+            this@BaseWatchFaceService.onVisibilityChanged(visible)
             if (visible) {
                 registerReceiver()
                 calendar.timeZone = TimeZone.getDefault()
