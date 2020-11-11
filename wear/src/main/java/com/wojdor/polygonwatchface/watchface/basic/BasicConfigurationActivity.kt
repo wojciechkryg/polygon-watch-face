@@ -12,6 +12,10 @@ class BasicConfigurationActivity : BaseConfigurationActivity() {
         SwitchConfigurationItem(
             R.string.configuration_always_outline,
             configurationRepository.isAlwaysOutline
-        ) { configurationRepository.isAlwaysOutline = it }
+        ) { configurationRepository.isAlwaysOutline = it },
+        SwitchConfigurationItem(
+            R.string.configuration_grayscale_in_ambient,
+            configurationRepository.isGrayscaleInAmbient
+        ) { configurationRepository.isGrayscaleInAmbient = it }
     )
 }

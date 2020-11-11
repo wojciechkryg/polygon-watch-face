@@ -12,7 +12,12 @@ class BasicConfigurationRepository(context: Context) : BaseConfigurationReposito
         get() = sharedPrefs.getBoolean(KEY_IS_ALWAYS_OUTLINE, false)
         set(value) = sharedPrefs.edit { putBoolean(KEY_IS_ALWAYS_OUTLINE, value) }
 
+    var isGrayscaleInAmbient
+        get() = sharedPrefs.getBoolean(KEY_IS_GRAYSCALE_IN_AMBIENT, false)
+        set(value) = sharedPrefs.edit { putBoolean(KEY_IS_GRAYSCALE_IN_AMBIENT, value) }
+
     companion object {
         private const val KEY_IS_ALWAYS_OUTLINE = "KEY_IS_ALWAYS_OUTLINE"
+        private const val KEY_IS_GRAYSCALE_IN_AMBIENT = "KEY_IS_GRAYSCALE_IN_AMBIENT"
     }
 }

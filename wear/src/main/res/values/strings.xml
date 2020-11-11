@@ -3,4 +3,5 @@
     <string name="polygon_basic_watch_face_name">Polygon</string>
 
     <string name="configuration_always_outline">Always outline</string>
+    <string name="configuration_grayscale_in_ambient">Grayscale in Always On Display</string>
 </resources>

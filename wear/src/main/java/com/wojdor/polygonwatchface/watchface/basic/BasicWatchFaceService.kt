@@ -37,7 +37,7 @@ class BasicWatchFaceService : BaseDigitalWatchFaceService() {
             backgroundInteractiveColor = getColor(R.color.black, theme)
             backgroundAmbientColor = getColor(R.color.black, theme)
             timeInteractiveColor = getColor(R.color.red_shade_400, theme)
-            timeAmbientColor = getColor(R.color.red_shade_400, theme)
+            timeAmbientColor = getColor(R.color.white, theme)
         }
         with(timePaint) {
             color = timeInteractiveColor
@@ -129,7 +129,7 @@ class BasicWatchFaceService : BaseDigitalWatchFaceService() {
     private fun setupAmbientPaints() {
         backgroundColor = backgroundAmbientColor
         with(timePaint) {
-            color = timeAmbientColor
+            color = if (configurationRepository.isGrayscaleInAmbient) timeAmbientColor else timeInteractiveColor
             style = Paint.Style.STROKE
             isAntiAlias = false
         }
