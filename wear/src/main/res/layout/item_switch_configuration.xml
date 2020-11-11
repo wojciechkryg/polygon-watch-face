@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ConfigurationItem"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:foreground="?android:attr/selectableItemBackgroundBorderless"
-    android:orientation="horizontal"
-    android:paddingStart="@dimen/screen_percentage_10"
-    android:paddingTop="@dimen/screen_percentage_05"
-    android:paddingEnd="@dimen/screen_percentage_10"
-    android:paddingBottom="@dimen/screen_percentage_05">
+    android:layout_height="wrap_content">
 
     <Switch
         android:id="@+id/itemSwitchConfigurationSwitch"
@@ -21,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/screen_percentage_05"
+        android:layout_marginStart="@dimen/screen_percentage_05"
         android:gravity="start"
         android:textSize="@dimen/item_configuration_text"
         tools:text="Switch Configuration Item" />
