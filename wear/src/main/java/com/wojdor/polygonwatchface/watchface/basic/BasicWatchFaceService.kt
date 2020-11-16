@@ -36,9 +36,9 @@ class BasicWatchFaceService : BaseDigitalWatchFaceService() {
         with(resources) {
             backgroundInteractiveColor = getColor(R.color.black, theme)
             backgroundAmbientColor = getColor(R.color.black, theme)
-            timeInteractiveColor = getColor(R.color.red_shade_400, theme)
             timeAmbientColor = getColor(R.color.white, theme)
         }
+        timeInteractiveColor = configurationRepository.timeColor
         with(timePaint) {
             color = timeInteractiveColor
             strokeWidth = paintWidth
@@ -66,6 +66,7 @@ class BasicWatchFaceService : BaseDigitalWatchFaceService() {
 
     override fun onVisibilityChanged(isVisible: Boolean) {
         if (isVisible) {
+            timeInteractiveColor = configurationRepository.timeColor
             updatePaints()
         }
     }
@@ -129,7 +130,8 @@ class BasicWatchFaceService : BaseDigitalWatchFaceService() {
     private fun setupAmbientPaints() {
         backgroundColor = backgroundAmbientColor
         with(timePaint) {
-            color = if (configurationRepository.isGrayscaleInAmbient) timeAmbientColor else timeInteractiveColor
+            color =
+                if (configurationRepository.isGrayscaleInAmbient) timeAmbientColor else timeInteractiveColor
             style = Paint.Style.STROKE
             isAntiAlias = false
         }

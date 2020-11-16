@@ -1,5 +1,5 @@
 package com.wojdor.polygonwatchface.domain
 
 enum class ConfigurationType {
-    SWITCH
+    COLOR, SWITCH
 }

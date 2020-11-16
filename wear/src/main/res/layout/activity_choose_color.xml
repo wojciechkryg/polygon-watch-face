@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <androidx.wear.widget.WearableRecyclerView
-        android:id="@+id/configurationWatchFaceItems"
+        android:id="@+id/chooseColorItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_switch_configuration" />
+        tools:listitem="@layout/item_color_configuration" />
 </androidx.wear.widget.BoxInsetLayout>
