@@ -4,7 +4,6 @@ import android.app.Activity
 import android.os.Bundle
 import com.wojdor.polygonwatchface.R
 import com.wojdor.polygonwatchface.configuration.ConfigurationItemsAdapter
-import com.wojdor.polygonwatchface.domain.BaseConfigurationItem
 import kotlinx.android.synthetic.main.activity_configuration_base.*
 
 abstract class BaseConfigurationActivity : Activity() {

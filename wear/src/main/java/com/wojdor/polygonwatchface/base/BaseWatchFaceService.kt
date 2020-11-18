@@ -14,11 +14,14 @@ import android.support.wearable.watchface.WatchFaceStyle
 import android.text.format.DateFormat
 import android.view.SurfaceHolder
 import android.view.WindowInsets
+import com.wojdor.common.domain.WatchFaceTime
+import com.wojdor.commonandroid.watchface.BaseWatchFace
 import com.wojdor.polygonwatchface.base.BaseEngineHandler.Companion.MESSAGE_UPDATE_TIME
 import java.util.*
 
 abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
+    abstract val watchFace: BaseWatchFace
     abstract val interactiveUpdateIntervalInMilliseconds: Long
 
     var isRound = false
@@ -31,25 +34,12 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
     var isAmbient = false
         private set
     val isAmbientWithProtection get() = isAmbient && (isLowBitAmbient || isBurnInProtection)
-    val digitalHours
-        get() = if (DateFormat.is24HourFormat(this)) {
-            calendar[Calendar.HOUR_OF_DAY]
-        } else {
-            val hour = calendar[Calendar.HOUR]
-            if (hour == 0) 12 else hour
-        }
-    val analogHours get() = calendar[Calendar.HOUR]
-    val minutes get() = calendar[Calendar.MINUTE]
-    val seconds get() = calendar[Calendar.SECOND]
-    val milliseconds get() = calendar[Calendar.MILLISECOND]
 
     private var isLowBitAmbient = false
     private var isBurnInProtection = false
     private val calendar = Calendar.getInstance()
 
     abstract fun onEngineInit()
-    abstract fun drawBackground(canvas: Canvas)
-    abstract fun drawWatchFace(canvas: Canvas)
     abstract fun onAmbientModeChanged()
 
     internal open fun onVisibilityChanged(isVisible: Boolean) {}
@@ -80,6 +70,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
             insets?.let {
                 isRound = it.isRound
             }
+            watchFace.init(width, height)
             onEngineInit()
         }
 
@@ -123,8 +114,13 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
 
         override fun onDraw(canvas: Canvas, bounds: Rect) {
             calendar.timeInMillis = System.currentTimeMillis()
-            drawBackground(canvas)
-            drawWatchFace(canvas)
+            with(watchFace) {
+                drawBackground(canvas)
+                drawWatchFace(
+                    canvas,
+                    WatchFaceTime(calendar, DateFormat.is24HourFormat(this@BaseWatchFaceService))
+                )
+            }
         }
 
         override fun onVisibilityChanged(visible: Boolean) {

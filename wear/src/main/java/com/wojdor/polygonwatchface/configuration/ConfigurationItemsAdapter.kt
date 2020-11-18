@@ -4,8 +4,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wojdor.commonandroid.extension.inflate
 import com.wojdor.polygonwatchface.R
+import com.wojdor.polygonwatchface.base.BaseConfigurationItem
 import com.wojdor.polygonwatchface.base.BaseViewHolder
-import com.wojdor.polygonwatchface.domain.BaseConfigurationItem
 import com.wojdor.polygonwatchface.domain.ColorConfigurationItem
 import com.wojdor.polygonwatchface.domain.ConfigurationType
 import com.wojdor.polygonwatchface.domain.SwitchConfigurationItem

@@ -1,5 +1,7 @@
 package com.wojdor.polygonwatchface.domain
 
+import com.wojdor.polygonwatchface.base.BaseConfigurationItem
+
 class SwitchConfigurationItem(
     textId: Int,
     val isChecked: Boolean,
