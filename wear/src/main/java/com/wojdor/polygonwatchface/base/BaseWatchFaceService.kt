@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Canvas
-import android.graphics.PointF
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.wearable.watchface.CanvasWatchFaceService
@@ -14,6 +13,7 @@ import android.support.wearable.watchface.WatchFaceStyle
 import android.text.format.DateFormat
 import android.view.SurfaceHolder
 import android.view.WindowInsets
+import com.wojdor.common.domain.Point
 import com.wojdor.common.domain.WatchFaceTime
 import com.wojdor.commonandroid.watchface.BaseWatchFace
 import com.wojdor.polygonwatchface.base.BaseEngineHandler.Companion.MESSAGE_UPDATE_TIME
@@ -30,7 +30,8 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
         private set
     var height = 0
         private set
-    val center = PointF()
+    lateinit var center: Point
+        private set
     var isAmbient = false
         private set
     val isAmbientWithProtection get() = isAmbient && (isLowBitAmbient || isBurnInProtection)
@@ -105,10 +106,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
             super.onSurfaceChanged(holder, format, width, height)
             this@BaseWatchFaceService.width = width
             this@BaseWatchFaceService.height = height
-            with(center) {
-                x = width / 2F
-                y = height / 2F
-            }
+            center = Point(width / 2F, height / 2F)
             onSurfaceChanged()
         }
 

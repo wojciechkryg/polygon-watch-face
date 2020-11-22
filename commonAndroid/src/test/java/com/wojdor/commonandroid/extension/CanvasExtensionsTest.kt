@@ -2,50 +2,37 @@ package com.wojdor.commonandroid.extension
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.PointF
+import com.wojdor.common.domain.Point
 import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.mockk
+import io.mockk.impl.annotations.MockK
 import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
 class CanvasExtensionsTest {
 
-    @RelaxedMockK
+    @MockK
     private lateinit var paint: Paint
 
-    @RelaxedMockK
+    @MockK
     private lateinit var canvas: Canvas
 
     @Before
     fun setup() {
-        MockKAnnotations.init(this)
+        MockKAnnotations.init(this, relaxed = true)
     }
 
     @Test
     fun `When canvas draw line extension is used then it call proper canvas draw line method`() {
-        val startX = mockk<Float>(relaxed = true)
-        val startY = mockk<Float>(relaxed = true)
-        val endX = mockk<Float>(relaxed = true)
-        val endY = mockk<Float>(relaxed = true)
+        canvas.drawLine(Point(1F, 2F), Point(3F, 4F), paint)
 
-        canvas.drawLine(PointF(startX, startY), PointF(endX, endY), paint)
-
-        verify(exactly = 1) {
-            canvas.drawLine(startX, startY, endX, endY, paint)
-        }
+        verify { canvas.drawLine(1F, 2F, 3F, 4F, paint) }
     }
 
     @Test
     fun `When canvas draw circle extension is used then it call proper canvas draw circle method`() {
-        val x = mockk<Float>(relaxed = true)
-        val y = mockk<Float>(relaxed = true)
+        canvas.drawCircle(Point(1F, 2F), 1F, paint)
 
-        canvas.drawCircle(PointF(x, y), 1F, paint)
-
-        verify(exactly = 1) {
-            canvas.drawCircle(x, y, 1F, paint)
-        }
+        verify { canvas.drawCircle(1F, 2F, 1F, paint) }
     }
 }

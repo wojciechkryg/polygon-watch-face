@@ -14,7 +14,6 @@ data class WatchFaceTime(private val calendar: Calendar, private val is24HourFor
     val analogHours get() = calendar[Calendar.HOUR]
     val minutes get() = calendar[Calendar.MINUTE]
     val seconds get() = calendar[Calendar.SECOND]
-    val milliseconds get() = calendar[Calendar.MILLISECOND]
 
     val hoursFirstDigit get() = digitalHours / 10
     val hoursSecondDigit get() = digitalHours % 10

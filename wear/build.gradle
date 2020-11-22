@@ -42,6 +42,8 @@ dependencies {
     implementation Library.Android.wear
     compileOnly Library.Android.wearable
     implementation Library.Android.wearableSupport
+    testImplementation Library.Test.junit
+    testImplementation Library.Test.mockk
     implementation project(path: Module.common)
     implementation project(path: Module.commonAndroid)
 }
