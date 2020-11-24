@@ -23,13 +23,6 @@ class CanvasExtensionsTest {
     }
 
     @Test
-    fun `When canvas draw line extension is used then it call proper canvas draw line method`() {
-        canvas.drawLine(Point(1F, 2F), Point(3F, 4F), paint)
-
-        verify { canvas.drawLine(1F, 2F, 3F, 4F, paint) }
-    }
-
-    @Test
     fun `When canvas draw circle extension is used then it call proper canvas draw circle method`() {
         canvas.drawCircle(Point(1F, 2F), 1F, paint)
 
