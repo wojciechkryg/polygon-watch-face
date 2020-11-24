@@ -108,12 +108,13 @@ open class BaseWatchFace(private val path: Path = Path()) {
         return path.apply {
             moveTo(x, y)
             angle += angleIncrement
-            for (i in 0 until digit) {
+            for (i in 1 until digit) {
                 x = point.x + digitRadius * cos(angle)
                 y = point.y + digitRadius * sin(angle)
                 lineTo(x, y)
                 angle += angleIncrement
             }
+            close()
         }
     }
 }

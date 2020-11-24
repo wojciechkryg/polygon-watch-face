@@ -86,7 +86,7 @@ class BaseWatchFaceTest {
                 moveTo(-2.6242432E-15F, -14.285714F)
                 lineTo(12.371792F, 7.142857F)
                 lineTo(-12.371792F, 7.142857F)
-                lineTo(-3.149976E-14F, -14.285714F)
+                close()
             }
         }
     }
@@ -101,7 +101,7 @@ class BaseWatchFaceTest {
                 lineTo(14.285714F, -3.4989908E-15F)
                 lineTo(4.3737385E-15F, 14.285714F)
                 lineTo(-14.285714F, 5.2484863E-15F)
-                lineTo(-6.1232338E-15F, -14.285714F)
+                close()
             }
         }
     }
@@ -117,7 +117,7 @@ class BaseWatchFaceTest {
                 lineTo(8.396932F, 11.557385F)
                 lineTo(-8.396932F, 11.557385F)
                 lineTo(-13.586521F, -4.4145284F)
-                lineTo(-6.1232338E-15F, -14.285714F)
+                close()
             }
         }
     }
@@ -134,7 +134,7 @@ class BaseWatchFaceTest {
                 lineTo(1.7062001E-14F, 14.285714F)
                 lineTo(-12.371792F, 7.142857F)
                 lineTo(-12.371792F, -7.142857F)
-                lineTo(-6.1232338E-15F, -14.285714F)
+                close()
             }
         }
     }
@@ -152,7 +152,7 @@ class BaseWatchFaceTest {
                 lineTo(-6.198339F, 12.870984F)
                 lineTo(-13.927542F, 3.1788704F)
                 lineTo(-11.169021F, -8.906997F)
-                lineTo(-6.1232338E-15F, -14.285714F)
+                close()
             }
         }
     }
@@ -171,7 +171,7 @@ class BaseWatchFaceTest {
                 lineTo(-10.101525F, 10.101525F)
                 lineTo(-14.285714F, 5.2484863E-15F)
                 lineTo(-10.101525F, -10.101525F)
-                lineTo(1.9253293E-14F, -14.285714F)
+                close()
             }
         }
     }
@@ -191,7 +191,7 @@ class BaseWatchFaceTest {
                 lineTo(-12.371792F, 7.142857F)
                 lineTo(-14.068682F, -2.4806883F)
                 lineTo(-9.18268F, -10.943492F)
-                lineTo(-5.6876284E-14F, -14.285714F)
+                close()
             }
         }
     }
