@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wojdor.polygonwatchface">
 
-    <!-- Required to act as a custom watch face. -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.wojdor.polygonwatchface.MainActivity">
+        <activity
+            android:name="com.wojdor.polygonwatchface.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,10 +19,4 @@
             </intent-filter>
         </activity>
     </application>
-
-    <!-- Required for complications to receive complication data and open the provider chooser. -->
-    <uses-permission android:name="com.google.android.wearable.permission.RECEIVE_COMPLICATION_DATA" />
-
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
 </manifest>

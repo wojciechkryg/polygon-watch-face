@@ -22,4 +22,9 @@ class ColorView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawCircle(height.toFloat() / 2, width.toFloat() / 2, width.toFloat() / 2, paint)
     }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val size = minOf(widthMeasureSpec, heightMeasureSpec)
+        super.onMeasure(size, size)
+    }
 }

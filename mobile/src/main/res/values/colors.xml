@@ -3,4 +3,52 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#E0E0E0</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
+    <color name="red_400">#EF5350</color>
+    <color name="pink_400">#EC407A</color>
+    <color name="purple_400">#AB47BC</color>
+    <color name="deep_purple_400">#7E57C2</color>
+    <color name="indigo_400">#5C6BC0</color>
+    <color name="blue_400">#42A5F5</color>
+    <color name="light_blue_400">#29B6F6</color>
+    <color name="cyan_400">#26C6DA</color>
+    <color name="teal_400">#26A69A</color>
+    <color name="green_400">#66BB6A</color>
+    <color name="light_green_400">#9CCC65</color>
+    <color name="lime_400">#D4E157</color>
+    <color name="yellow_400">#FFEE58</color>
+    <color name="amber_400">#FFCA28</color>
+    <color name="orange_400">#FFA726</color>
+    <color name="deep_orange_400">#FF7043</color>
+    <color name="brown_400">#8D6E63</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="blue_grey_400">#78909C</color>
+
+    <integer-array name="configuration_time_colors">
+        <item>@color/red_400</item>
+        <item>@color/pink_400</item>
+        <item>@color/purple_400</item>
+        <item>@color/deep_purple_400</item>
+        <item>@color/indigo_400</item>
+        <item>@color/blue_400</item>
+        <item>@color/light_blue_400</item>
+        <item>@color/cyan_400</item>
+        <item>@color/teal_400</item>
+        <item>@color/green_400</item>
+        <item>@color/light_green_400</item>
+        <item>@color/lime_400</item>
+        <item>@color/yellow_400</item>
+        <item>@color/amber_400</item>
+        <item>@color/orange_400</item>
+        <item>@color/deep_orange_400</item>
+        <item>@color/brown_400</item>
+        <item>@color/white</item>
+        <item>@color/grey_400</item>
+        <item>@color/blue_grey_400</item>
+    </integer-array>
 </resources>

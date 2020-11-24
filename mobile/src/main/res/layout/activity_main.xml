@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+    <com.wojdor.commonandroid.view.WatchFaceView
+        android:id="@+id/mainWatchFace"
+        android:layout_width="@dimen/main_watch_face_size"
+        android:layout_height="@dimen/main_watch_face_size"
+        app:layout_constraintBottom_toTopOf="@id/mainInstallOnWearablesButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/mainInstallOnWearablesButton"
         android:layout_width="wrap_content"
@@ -15,6 +24,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/mainWatchFace" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
