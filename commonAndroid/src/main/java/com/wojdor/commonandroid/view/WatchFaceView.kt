@@ -2,6 +2,7 @@ package com.wojdor.commonandroid.view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.text.format.DateFormat
 import android.util.AttributeSet
 import android.view.View
@@ -15,7 +16,18 @@ class WatchFaceView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    val watchFace = BasicWatchFace()
+    private val watchFace = BasicWatchFace()
+    var timeColor
+        get() = watchFace.timeColor
+        set(value) {
+            watchFace.timeColor = value
+        }
+    var dialColor
+        get() = dialPaint.color
+        set(value) {
+            dialPaint.color = value
+        }
+    private val dialPaint = Paint().apply { isAntiAlias = true }
     private var time = WatchFaceTime(Calendar.getInstance(), DateFormat.is24HourFormat(context))
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
@@ -28,6 +40,14 @@ class WatchFaceView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     }
 
     override fun onDraw(canvas: Canvas?) {
-        canvas?.let { watchFace.drawWatchFace(it, time) }
+        canvas?.let {
+            it.drawCircle(width / 2F, height / 2F, width / 2F, dialPaint)
+            watchFace.drawWatchFace(it, time)
+        }
+    }
+
+    fun refreshTime() {
+        time = WatchFaceTime(Calendar.getInstance(), DateFormat.is24HourFormat(context))
+        invalidate()
     }
 }

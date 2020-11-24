@@ -22,7 +22,7 @@ open class BaseWatchFace(private val path: Path = Path()) {
         set(value) {
             timePaint.color = value
         }
-    var backgroundColor = 0
+    var dialColor = 0
     var isAntiAlias
         get() = timePaint.isAntiAlias
         set(value) {
@@ -37,8 +37,8 @@ open class BaseWatchFace(private val path: Path = Path()) {
     open fun init(width: Int, height: Int) {}
     open fun drawWatchFace(canvas: Canvas, time: WatchFaceTime) {}
 
-    fun drawBackground(canvas: Canvas) {
-        canvas.drawColor(backgroundColor)
+    fun drawDial(canvas: Canvas) {
+        canvas.drawColor(dialColor)
     }
 
     fun drawDigit(

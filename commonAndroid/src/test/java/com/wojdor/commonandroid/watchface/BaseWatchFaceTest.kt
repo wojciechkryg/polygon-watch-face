@@ -26,19 +26,19 @@ class BaseWatchFaceTest {
     }
 
     @Test
-    fun `When background is not set then it is drew it with default color`() {
-        watchFace.drawBackground(canvas)
+    fun `When dial color is not set then it is drew it with default color`() {
+        watchFace.drawDial(canvas)
 
         verify { canvas.drawColor(0) }
     }
 
     @Test
-    fun `When background is set then it is drew it with set color`() {
-        watchFace.backgroundColor = BACKGROUND_COLOR
+    fun `When dial color is set then it is drew it with set color`() {
+        watchFace.dialColor = DIAL_COLOR
 
-        watchFace.drawBackground(canvas)
+        watchFace.drawDial(canvas)
 
-        verify { canvas.drawColor(BACKGROUND_COLOR) }
+        verify { canvas.drawColor(DIAL_COLOR) }
     }
 
     @Test
@@ -197,7 +197,7 @@ class BaseWatchFaceTest {
     }
 
     companion object {
-        private const val BACKGROUND_COLOR = 3
+        private const val DIAL_COLOR = 3
         private val CENTER_POINT = Point()
         private const val DOT_RADIUS = 2.3809524F
         private const val DIGIT_RADIUS = 14.285714F

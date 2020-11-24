@@ -11,21 +11,21 @@ class BasicWatchFaceService : BaseWatchFaceService() {
     private val configurationRepository: BasicConfigurationRepository by inject()
     private var timeInteractiveColor = 0
     private var timeAmbientColor = 0
-    private var backgroundInteractiveColor = 0
-    private var backgroundAmbientColor = 0
+    private var dialInteractiveColor = 0
+    private var dialAmbientColor = 0
 
     override val interactiveUpdateIntervalInMilliseconds = TimeUnit.MINUTES.toMillis(1)
     override val watchFace: BasicWatchFace by inject()
 
     override fun onEngineInit() {
-        backgroundInteractiveColor = getColor(R.color.black)
-        backgroundAmbientColor = getColor(R.color.black)
+        dialInteractiveColor = getColor(R.color.black)
+        dialAmbientColor = getColor(R.color.black)
         timeAmbientColor = getColor(R.color.white)
         timeInteractiveColor = configurationRepository.timeColor
         with(watchFace) {
             timeColor = timeInteractiveColor
             isOutline = configurationRepository.isAlwaysOutline
-            backgroundColor = backgroundInteractiveColor
+            dialColor = dialInteractiveColor
         }
     }
 
@@ -51,7 +51,7 @@ class BasicWatchFaceService : BaseWatchFaceService() {
         with(watchFace) {
             timeColor =
                 if (configurationRepository.isGrayscaleInAmbient) timeAmbientColor else timeInteractiveColor
-            backgroundColor = backgroundAmbientColor
+            dialColor = dialAmbientColor
             isOutline = true
             isAntiAlias = false
         }
@@ -60,7 +60,7 @@ class BasicWatchFaceService : BaseWatchFaceService() {
     private fun setupInteractivePaints() {
         with(watchFace) {
             timeColor = timeInteractiveColor
-            backgroundColor = backgroundInteractiveColor
+            dialColor = dialInteractiveColor
             isOutline = configurationRepository.isAlwaysOutline
             isAntiAlias = true
         }

@@ -13,14 +13,14 @@ class ColorView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
     private val paint = Paint().apply { isAntiAlias = true }
-    var color = 0
+    var color
+        get() = paint.color
         set(value) {
             paint.color = value
-            field = value
         }
 
     override fun onDraw(canvas: Canvas?) {
-        canvas?.drawCircle(height.toFloat() / 2, width.toFloat() / 2, width.toFloat() / 2, paint)
+        canvas?.drawCircle(width.toFloat() / 2, height.toFloat() / 2, width.toFloat() / 2, paint)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

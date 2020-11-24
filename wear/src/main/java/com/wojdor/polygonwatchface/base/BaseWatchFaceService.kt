@@ -113,7 +113,7 @@ abstract class BaseWatchFaceService : CanvasWatchFaceService() {
         override fun onDraw(canvas: Canvas, bounds: Rect) {
             calendar.timeInMillis = System.currentTimeMillis()
             with(watchFace) {
-                drawBackground(canvas)
+                drawDial(canvas)
                 drawWatchFace(
                     canvas,
                     WatchFaceTime(calendar, DateFormat.is24HourFormat(this@BaseWatchFaceService))

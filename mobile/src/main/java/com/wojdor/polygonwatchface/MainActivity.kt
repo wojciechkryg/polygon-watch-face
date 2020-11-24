@@ -12,6 +12,7 @@ import com.google.android.gms.wearable.Wearable
 import com.google.android.wearable.intent.RemoteIntent
 import com.wojdor.common.extension.clearAndAddAll
 import com.wojdor.commonandroid.extension.showSnackbar
+import com.wojdor.polygonwatchface.broadcast.TimeChangedReceiver
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,12 +28,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    private val timeChangedReceiver = TimeChangedReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainWatchFace.watchFace.timeColor = getColor(R.color.red_400)
+        with(mainWatchFace) {
+            dialColor = getColor(R.color.black)
+            timeColor = getColor(R.color.red_400)
+            timeChangedReceiver.onTimeChanged = { refreshTime() }
+        }
         mainInstallOnWearablesButton.setOnClickListener { onInstallClick() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        registerReceiver(timeChangedReceiver, timeChangedReceiver.intentFilter)
     }
 
     override fun onResume() {
@@ -46,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         Wearable.getCapabilityClient(this)
             .removeListener(capabilityChangedListener, CAPABILITY_WEAR_APP)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(timeChangedReceiver)
     }
 
     private fun onInstallClick() {
