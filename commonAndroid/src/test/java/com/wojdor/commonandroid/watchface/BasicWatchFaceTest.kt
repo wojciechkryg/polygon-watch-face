@@ -1,7 +1,6 @@
 package com.wojdor.commonandroid.watchface
 
 import android.graphics.Canvas
-import android.graphics.Paint
 import com.wojdor.common.domain.Point
 import com.wojdor.common.domain.WatchFaceTime
 import io.mockk.MockKAnnotations
@@ -15,9 +14,6 @@ import java.util.*
 class BasicWatchFaceTest {
 
     @MockK
-    private lateinit var paint: Paint
-
-    @MockK
     private lateinit var canvas: Canvas
 
     @SpyK
@@ -26,10 +22,7 @@ class BasicWatchFaceTest {
     @Before
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
-        with(watchFace) {
-            init(WATCH_SIZE, WATCH_SIZE)
-            timePaint = paint
-        }
+        watchFace.init(WATCH_SIZE, WATCH_SIZE)
     }
 
     @Test

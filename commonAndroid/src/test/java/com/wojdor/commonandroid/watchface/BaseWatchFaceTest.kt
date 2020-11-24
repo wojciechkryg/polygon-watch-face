@@ -23,11 +23,19 @@ class BaseWatchFaceTest {
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
         watchFace = BaseWatchFace(path)
-        watchFace.backgroundColor = BACKGROUND_COLOR
     }
 
     @Test
-    fun `When background is drew then it is drew it with proper color`() {
+    fun `When background is not set then it is drew it with default color`() {
+        watchFace.drawBackground(canvas)
+
+        verify { canvas.drawColor(0) }
+    }
+
+    @Test
+    fun `When background is set then it is drew it with set color`() {
+        watchFace.backgroundColor = BACKGROUND_COLOR
+
         watchFace.drawBackground(canvas)
 
         verify { canvas.drawColor(BACKGROUND_COLOR) }

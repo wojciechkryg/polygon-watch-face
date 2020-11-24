@@ -13,8 +13,26 @@ import kotlin.math.sin
 
 open class BaseWatchFace(private val path: Path = Path()) {
 
-    var timePaint = Paint()
+    protected val timePaint = Paint().apply {
+        style = Paint.Style.FILL_AND_STROKE
+        isAntiAlias = true
+    }
+    var timeColor
+        get() = timePaint.color
+        set(value) {
+            timePaint.color = value
+        }
     var backgroundColor = 0
+    var isAntiAlias
+        get() = timePaint.isAntiAlias
+        set(value) {
+            timePaint.isAntiAlias = value
+        }
+    var isOutline
+        get() = timePaint.style == Paint.Style.STROKE
+        set(value) {
+            timePaint.style = if (value) Paint.Style.STROKE else Paint.Style.FILL_AND_STROKE
+        }
 
     open fun init(width: Int, height: Int) {}
     open fun drawWatchFace(canvas: Canvas, time: WatchFaceTime) {}

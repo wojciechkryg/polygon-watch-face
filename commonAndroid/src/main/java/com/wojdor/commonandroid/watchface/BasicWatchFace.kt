@@ -16,6 +16,7 @@ class BasicWatchFace : BaseWatchFace() {
     override fun init(width: Int, height: Int) {
         dotRadius = width / DOT_RADIUS_RATIO
         digitRadius = width / DIGIT_RADIUS_RATIO
+        timePaint.strokeWidth = width / PAINT_WIDTH_RATIO
         initQuarterCenters(width, height)
     }
 
@@ -38,5 +39,6 @@ class BasicWatchFace : BaseWatchFace() {
     companion object {
         private const val DIGIT_RADIUS_RATIO = 7F
         private const val DOT_RADIUS_RATIO = 42F
+        private const val PAINT_WIDTH_RATIO = 139F
     }
 }
