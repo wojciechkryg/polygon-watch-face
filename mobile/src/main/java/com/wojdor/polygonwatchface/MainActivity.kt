@@ -11,9 +11,13 @@ import com.google.android.gms.wearable.Node
 import com.google.android.gms.wearable.Wearable
 import com.google.android.wearable.intent.RemoteIntent
 import com.wojdor.common.extension.clearAndAddAll
+import com.wojdor.common.extension.nextListItem
+import com.wojdor.commonandroid.extension.getIntList
 import com.wojdor.commonandroid.extension.showSnackbar
 import com.wojdor.polygonwatchface.broadcast.TimeChangedReceiver
+import com.wojdor.polygonwatchface.util.IntervalExecutor
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private val timeChangedReceiver = TimeChangedReceiver()
+    private val intervalExecutor =
+        IntervalExecutor(CHANGE_WATCH_FACE_TIME_INTERVAL) { randomizeWatchFace() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,17 +57,28 @@ class MainActivity : AppCompatActivity() {
         Wearable.getCapabilityClient(this)
             .addListener(capabilityChangedListener, CAPABILITY_WEAR_APP)
         findAllConnectedWearables()
+        intervalExecutor.start()
     }
 
     override fun onPause() {
         super.onPause()
         Wearable.getCapabilityClient(this)
             .removeListener(capabilityChangedListener, CAPABILITY_WEAR_APP)
+        intervalExecutor.stop()
     }
 
     override fun onStop() {
         super.onStop()
         unregisterReceiver(timeChangedReceiver)
+    }
+
+    private fun randomizeWatchFace() {
+        with(mainWatchFace) {
+            timeColor =
+                Random.nextListItem(getIntList(R.array.configuration_time_colors))
+            isOutline = Random.nextBoolean()
+            refreshTime()
+        }
     }
 
     private fun onInstallClick() {
@@ -96,5 +113,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val CAPABILITY_WEAR_APP = "polygon_watch_face_wear"
+        private const val CHANGE_WATCH_FACE_TIME_INTERVAL = 1500L
     }
 }

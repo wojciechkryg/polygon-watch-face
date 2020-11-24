@@ -27,6 +27,11 @@ class WatchFaceView(context: Context, attrs: AttributeSet?, defStyle: Int) :
         set(value) {
             dialPaint.color = value
         }
+    var isOutline
+        get() = watchFace.isOutline
+        set(value) {
+            watchFace.isOutline = value
+        }
     private val dialPaint = Paint().apply { isAntiAlias = true }
     private var time = WatchFaceTime(Calendar.getInstance(), DateFormat.is24HourFormat(context))
 
