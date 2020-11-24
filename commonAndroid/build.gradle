@@ -35,6 +35,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation Library.Android.appcompat
     implementation Library.Android.core
+    implementation Library.Android.material
     implementation Library.kotlin
     testImplementation Library.Test.junit
     testImplementation Library.Test.mockk

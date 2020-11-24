@@ -21,6 +21,7 @@ object Version {
     val koin = "2.1.6"
     val kotlin = "1.3.72"
     val legacySupport = "1.0.0"
+    val material = "1.2.1"
     val mockk = "1.10.2"
     val recyclerView = "1.1.0"
     val percentLayout = "1.0.0"
@@ -37,6 +38,7 @@ object Library {
         val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
         val legacySupport = "androidx.legacy:legacy-support-v4:${Version.legacySupport}"
+        val material = "com.google.android.material:material:${Version.material}"
         val recyclerView = "androidx.recyclerview:recyclerview:${Version.recyclerView}"
         val percentLayout = "androidx.percentlayout:percentlayout:${Version.percentLayout}"
         val playServices = "com.google.android.gms:play-services-base:${Version.playServices}"

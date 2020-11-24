@@ -32,7 +32,10 @@ dependencies {
     implementation Library.Android.appcompat
     implementation Library.Android.constraintLayout
     implementation Library.Android.core
+    implementation Library.Android.material
     implementation Library.Android.playServicesWearable
+    compileOnly Library.Android.wearable
+    implementation Library.Android.wearableSupport
     implementation Library.kotlin
     testImplementation Library.Test.junit
     androidTestImplementation Library.Test.junitExtension
