@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="configuration_time_color">Cor da hora</string>
+    <string name="configuration_always_outline">Sempre contornar</string>
+    <string name="configuration_grayscale_in_ambient">Tons de cinza com a tela sempre ligada</string>
+</resources>

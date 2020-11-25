@@ -3,6 +3,6 @@
 
     <string name="choose_your_style">Choose your own style!</string>
     <string name="install_on_wear_os">Install on Wear OS</string>
-    <string name="check_wear_os">Check your Wear OS device.</string>
+    <string name="check_wear_os">Check your Wear OS device!</string>
     <string name="cannot_find_devices">Supported devices could not be found.</string>
 </resources>

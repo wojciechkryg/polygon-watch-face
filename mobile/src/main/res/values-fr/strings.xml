@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choose_your_style">Choisissez votre propre style!</string>
+    <string name="install_on_wear_os">Install on Wear OS</string>
+    <string name="check_wear_os">Installer sur Wear OS</string>
+    <string name="cannot_find_devices">Les appareils pris en charge sont introuvables.</string>
+</resources>

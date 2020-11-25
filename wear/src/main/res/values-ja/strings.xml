@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="configuration_time_color">時間の色</string>
+    <string name="configuration_always_outline">常に輪郭</string>
+    <string name="configuration_grayscale_in_ambient">画面が常にオンになっている灰色の色合い</string>
+</resources>

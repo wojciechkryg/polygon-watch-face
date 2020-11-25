@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="configuration_time_color">Цвет часа</string>
+    <string name="configuration_always_outline">Всегда контур</string>
+    <string name="configuration_grayscale_in_ambient">Оттенки серого при постоянно включенном экране</string>
+</resources>
