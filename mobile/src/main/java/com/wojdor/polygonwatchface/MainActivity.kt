@@ -39,11 +39,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        with(mainWatchFace) {
-            dialColor = getColor(R.color.black)
-            timeColor = getColor(R.color.red_400)
-            timeChangedReceiver.onTimeChanged = { refreshTime() }
-        }
+        timeChangedReceiver.onTimeChanged = { mainWatchFace.refreshTime() }
+        randomizeWatchFace()
         mainInstallOnWearablesButton.setOnClickListener { onInstallClick() }
     }
 
