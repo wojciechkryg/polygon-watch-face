@@ -4,7 +4,7 @@ A minimalistic, fancy and open source watch face for Wear OS.
 
 ## Details
 
-Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute number.
+Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute digit.
 
 | Digit | Object        |
 |:-----:|---------------|
