@@ -10,7 +10,7 @@ Every digit on the clock is represented by a regular polygon. The number of vert
 |:-----:|---------------|
 | **0** | empty         |
 | **1** | point         |
-| **2** | line          |
+| **2** | section       |
 | **3** | triangle      |
 | **4** | square        |
 | **5** | pentagon      |
