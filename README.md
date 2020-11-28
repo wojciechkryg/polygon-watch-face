@@ -4,13 +4,13 @@ A minimalistic, fancy and open source watch face for Wear OS.
 
 ## Details
 
-Every digit on the clock is represented by a regular polygon. Number of apices corresponds with each number from time with some exceptions.
+Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute number.
 
 | Digit | Object        |
 |:-----:|---------------|
 | **0** | empty         |
 | **1** | point         |
-| **2** | line segment  |
+| **2** | line          |
 | **3** | triangle      |
 | **4** | square        |
 | **5** | pentagon      |
@@ -18,6 +18,13 @@ Every digit on the clock is represented by a regular polygon. Number of apices c
 | **7** | heptagon      |
 | **8** | octagon       |
 | **9** | nonagon       |
+
+## Features
+- customizable time color
+- filled or contour time
+- low battery drain
+- colorful in AOD mode
+- easy install on Wear OS throught mobile app
 
 ## Screenshots
 
