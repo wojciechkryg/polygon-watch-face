@@ -13,13 +13,14 @@ android {
         applicationId Application.id
         minSdkVersion Application.minSdk
         targetSdkVersion Application.targetSdk
-        versionCode Application.versionCode
-        versionName Application.versionName
+        versionCode Application.Wear.versionCode
+        versionName Application.Wear.versionName
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
