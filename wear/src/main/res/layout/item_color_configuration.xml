@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ConfigurationItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.wojdor.commonandroid.view.ColorView
+        android:id="@+id/itemColorConfigurationColor"
+        android:layout_width="@dimen/item_configuration_color_size"
+        android:layout_height="@dimen/item_configuration_color_size" />
+
+    <TextView
+        android:id="@+id/itemColorConfigurationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/screen_percentage_05"
+        android:gravity="start"
+        android:textSize="@dimen/item_configuration_text"
+        tools:text="Color Configuration Item" />
+</LinearLayout>

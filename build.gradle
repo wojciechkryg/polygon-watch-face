@@ -1,0 +1,23 @@
+import com.wojdor.buildsrc.Version
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:${Version.gradle}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

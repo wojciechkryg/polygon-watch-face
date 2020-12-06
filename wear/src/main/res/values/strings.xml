@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">Polygon Watch Face</string>
+    <string name="polygon_basic_watch_face_name" translatable="false">Polygon</string>
+
+    <string name="configuration_time_color">Time color</string>
+    <string name="configuration_always_outline">Always outline</string>
+    <string name="configuration_grayscale_in_ambient">Grayscale in Always On Display mode</string>
+</resources>

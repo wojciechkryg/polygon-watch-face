@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ConfigurationItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Switch
+        android:id="@+id/itemSwitchConfigurationSwitch"
+        style="@style/Widget.Wear.RoundSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/itemSwitchConfigurationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/screen_percentage_05"
+        android:gravity="start"
+        android:textSize="@dimen/item_configuration_text"
+        tools:text="Switch Configuration Item" />
+</LinearLayout>

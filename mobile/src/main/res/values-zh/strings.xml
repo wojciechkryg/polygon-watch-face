@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choose_your_style">选择自己的风格！</string>
+    <string name="install_on_wear_os">在Wear OS上安装</string>
+    <string name="check_wear_os">检查您的Wear OS设备！</string>
+    <string name="cannot_find_devices">找不到支持的设备。</string>
+</resources>

@@ -1,0 +1,46 @@
+import com.wojdor.buildsrc.Application
+import com.wojdor.buildsrc.Library
+import com.wojdor.buildsrc.Module
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Application.compileSdk
+
+    defaultConfig {
+        applicationId Application.id
+        minSdkVersion Application.minSdk
+        targetSdkVersion Application.targetSdk
+        versionCode Application.Mobile.versionCode
+        versionName Application.Mobile.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation Library.Android.appcompat
+    implementation Library.Android.constraintLayout
+    implementation Library.Android.core
+    implementation Library.Android.material
+    implementation Library.Android.playServicesWearable
+    compileOnly Library.Android.wearable
+    implementation Library.Android.wearableSupport
+    implementation Library.kotlin
+    testImplementation Library.Test.junit
+    androidTestImplementation Library.Test.junitExtension
+    wearApp project(Module.wear)
+    implementation project(path: Module.common)
+    implementation project(path: Module.commonAndroid)
+}

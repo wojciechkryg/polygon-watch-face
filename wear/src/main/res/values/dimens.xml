@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_configuration_text">16sp</dimen>
+    <dimen name="item_configuration_color_size">40dp</dimen>
+    <dimen name="item_choose_color_size">60dp</dimen>
+</resources>

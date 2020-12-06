@@ -1,0 +1,3 @@
+include ':commonAndroid'
+include ':common'
+include ':mobile', ':wear'

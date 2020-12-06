@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="configuration_time_color">Zeitfarbe</string>
+    <string name="configuration_always_outline">Immer konturieren</string>
+    <string name="configuration_grayscale_in_ambient">Grautöne bei eingeschaltetem Bildschirm</string>
+</resources>

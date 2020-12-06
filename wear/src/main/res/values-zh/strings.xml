@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="configuration_time_color">小时的颜色</string>
+    <string name="configuration_always_outline">总是轮廓</string>
+    <string name="configuration_grayscale_in_ambient">始终显示模式下的灰度</string>
+</resources>

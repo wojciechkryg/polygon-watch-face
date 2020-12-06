@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ConfigurationItem">
+        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/screen_percentage_10</item>
+        <item name="android:paddingTop">@dimen/screen_percentage_05</item>
+        <item name="android:paddingEnd">@dimen/screen_percentage_10</item>
+        <item name="android:paddingBottom">@dimen/screen_percentage_05</item>
+    </style>
+</resources>
