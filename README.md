@@ -24,7 +24,7 @@ Geometric figures instead of digits. Every digit on the clock is represented by 
 - filled or contour time
 - low battery drain
 - colorful in AOD mode
-- easy install on Wear OS throught mobile app
+- easy install on Wear OS through a mobile app
 
 ## Screenshots
 
