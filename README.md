@@ -4,11 +4,11 @@ A minimalistic, fancy and open source watch face for Wear OS.
 
 ## Details
 
-Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute digit.
+Geometric figures instead of digits. Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute digit.
 
 | Digit | Object        |
 |:-----:|---------------|
-| **0** | empty         |
+| **0** | no shape      |
 | **1** | point         |
 | **2** | section       |
 | **3** | triangle      |
@@ -38,7 +38,7 @@ Every digit on the clock is represented by a regular polygon. The number of vert
 
 ## Download
 
-Coming soon!
+[![Download from Google Play](screenshots/google_play_badge.png)](https://play.google.com/store/apps/details?id=com.wojdor.polygonwatchface)
 
 ## License
 ```
