@@ -19,8 +19,8 @@ class ColorView(context: Context, attrs: AttributeSet?, defStyle: Int) :
             paint.color = value
         }
 
-    override fun onDraw(canvas: Canvas?) {
-        canvas?.drawCircle(width.toFloat() / 2, height.toFloat() / 2, width.toFloat() / 2, paint)
+    override fun onDraw(canvas: Canvas) {
+        canvas.drawCircle(width.toFloat() / 2, height.toFloat() / 2, width.toFloat() / 2, paint)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

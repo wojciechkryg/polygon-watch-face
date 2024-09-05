@@ -1,16 +1,15 @@
 package com.wojdor.polygonwatchface.configuration
 
-import android.view.View
 import com.wojdor.polygonwatchface.base.BaseViewHolder
+import com.wojdor.polygonwatchface.databinding.ItemSwitchConfigurationBinding
 import com.wojdor.polygonwatchface.domain.SwitchConfigurationItem
-import kotlinx.android.synthetic.main.item_switch_configuration.view.*
 
-class SwitchConfigurationItemViewHolder(itemView: View) :
-    BaseViewHolder<SwitchConfigurationItem>(itemView) {
+class SwitchConfigurationItemViewHolder(private val binding: ItemSwitchConfigurationBinding) :
+    BaseViewHolder<SwitchConfigurationItem>(binding.root) {
 
     override fun bind(item: SwitchConfigurationItem) {
-        with(itemView) {
-            setOnClickListener { itemSwitchConfigurationSwitch.toggle() }
+        with(binding) {
+            root.setOnClickListener { itemSwitchConfigurationSwitch.toggle() }
             with(itemSwitchConfigurationSwitch) {
                 isChecked = item.isChecked
                 setOnCheckedChangeListener { _, isChecked ->

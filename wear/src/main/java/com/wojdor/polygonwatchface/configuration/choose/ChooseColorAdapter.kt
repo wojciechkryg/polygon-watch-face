@@ -1,15 +1,19 @@
 package com.wojdor.polygonwatchface.configuration.choose
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.wojdor.commonandroid.extension.inflate
-import com.wojdor.polygonwatchface.R
+import com.wojdor.polygonwatchface.databinding.ItemChooseColorBinding
 
 class ChooseColorAdapter(private val items: List<Int>, private val onClick: (Int) -> Unit) :
     RecyclerView.Adapter<ChooseColorViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ChooseColorViewHolder(parent.inflate(R.layout.item_choose_color))
+        ChooseColorViewHolder(
+            ItemChooseColorBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
 
     override fun getItemCount() = items.size
 

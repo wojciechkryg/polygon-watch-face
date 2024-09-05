@@ -4,19 +4,24 @@ import com.wojdor.buildsrc.Module
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Application.compileSdk
+    namespace = "com.wojdor.polygonwatchface.common"
 
     defaultConfig {
-        minSdkVersion Application.minSdk
-        targetSdkVersion Application.targetSdk
+        minSdk Application.minSdk
+        targetSdk Application.targetSdk
+        compileSdk Application.compileSdk
         versionCode Application.Mobile.versionCode
         versionName Application.Mobile.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     testOptions {

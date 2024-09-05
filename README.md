@@ -1,10 +1,10 @@
 # Polygon Watch Face ![](/mobile/src/main/res/mipmap-mdpi/ic_launcher_round.png)
 
-A minimalistic, fancy and open source watch face for Wear OS.
+✨ A minimalistic, fancy and open source watch face for Wear OS.
 
-## Details
+## 🔢 Details
 
-Geometric figures instead of digits. Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute digit.
+🔸🔺 Geometric figures instead of digits. Every digit on the clock is represented by a regular polygon. The number of vertices corresponds with each hour and minute digit.
 
 | Digit | Object        |
 |:-----:|---------------|
@@ -19,14 +19,14 @@ Geometric figures instead of digits. Every digit on the clock is represented by 
 | **8** | octagon       |
 | **9** | nonagon       |
 
-## Features
+## 🪄 Features
 - customizable time color
 - filled or contour time
 - low battery drain
 - colorful in AOD mode
 - easy install on Wear OS through a mobile app
 
-## Screenshots
+## 📸 Screenshots
 
 <p align="center">
  <img src="/screenshots/01.png" width="280" height="498" alt="Minimalist look">
@@ -36,11 +36,11 @@ Geometric figures instead of digits. Every digit on the clock is represented by 
  <img src="/screenshots/05.png" width="280" height="498" alt="Colorful in AOD mode">
 </p>
 
-## Download
+## 📥 Download
 
 [![Download from Google Play](screenshots/google_play_badge.png)](https://play.google.com/store/apps/details?id=com.wojdor.polygonwatchface)
 
-## License
+## 📄 License
 ```
  Copyright 2020 Wojciech Kryg
 

@@ -1,19 +1,17 @@
 package com.wojdor.polygonwatchface.configuration.choose
 
-import android.view.View
 import com.wojdor.polygonwatchface.base.BaseViewHolder
-import kotlinx.android.synthetic.main.item_choose_color.view.*
+import com.wojdor.polygonwatchface.databinding.ItemChooseColorBinding
 
-class ChooseColorViewHolder(itemView: View) : BaseViewHolder<Int>(itemView) {
+class ChooseColorViewHolder(private val binding: ItemChooseColorBinding) :
+    BaseViewHolder<Int>(binding.root) {
 
     fun bind(item: Int, onClick: (Int) -> Unit) {
-        itemView.setOnClickListener { onClick(item) }
+        binding.root.setOnClickListener { onClick(item) }
         bind(item)
     }
 
     override fun bind(item: Int) {
-        with(itemView) {
-            itemChooseColorColor.color = item
-        }
+        binding.itemChooseColorColor.color = item
     }
 }

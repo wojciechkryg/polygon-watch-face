@@ -4,17 +4,26 @@ import com.wojdor.buildsrc.Module
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Application.compileSdk
+    namespace = "com.wojdor.polygonwatchface"
 
     defaultConfig {
         applicationId Application.id
-        minSdkVersion Application.minSdk
-        targetSdkVersion Application.targetSdk
+        minSdk Application.minSdk
+        targetSdk Application.targetSdk
+        compileSdk Application.compileSdk
         versionCode Application.Wear.versionCode
         versionName Application.Wear.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     buildTypes {
@@ -24,16 +33,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    kotlinOptions {
-        jvmTarget = Application.targetCompatibility
-    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation Library.koin
     implementation Library.kotlin
+    implementation Library.Android.constraintLayout
     implementation Library.Android.core
     implementation Library.Android.legacySupport
     implementation Library.Android.percentLayout
