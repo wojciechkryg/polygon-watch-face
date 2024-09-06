@@ -2,51 +2,55 @@ package com.wojdor.polygonwatchface
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.ResultReceiver
 import androidx.appcompat.app.AppCompatActivity
+import androidx.wear.remote.interactions.RemoteActivityHelper
 import com.google.android.gms.wearable.CapabilityInfo
 import com.google.android.gms.wearable.Node
 import com.google.android.gms.wearable.Wearable
-import com.google.android.wearable.intent.RemoteIntent
 import com.wojdor.common.extension.clearAndAddAll
 import com.wojdor.common.extension.nextListItem
 import com.wojdor.commonandroid.extension.getIntList
 import com.wojdor.commonandroid.extension.showSnackbar
 import com.wojdor.polygonwatchface.broadcast.TimeChangedReceiver
+import com.wojdor.polygonwatchface.databinding.ActivityMainBinding
 import com.wojdor.polygonwatchface.util.IntervalExecutor
-import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.Executors
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private val connectedWearables = mutableListOf<Node>()
     private val capabilityChangedListener = { _: CapabilityInfo -> findAllConnectedWearables() }
-    private val remoteResultReceiver: ResultReceiver = object : ResultReceiver(Handler()) {
-        override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
-            if (resultCode == RemoteIntent.RESULT_OK) {
-                showSnackbar(R.string.check_wear_os)
-            } else {
-                showSnackbar(R.string.cannot_find_devices)
-            }
-        }
-    }
     private val timeChangedReceiver = TimeChangedReceiver()
     private val intervalExecutor =
         IntervalExecutor(CHANGE_WATCH_FACE_TIME_INTERVAL) { randomizeWatchFace() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        timeChangedReceiver.onTimeChanged = { mainWatchFace.refreshTime() }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        timeChangedReceiver.onTimeChanged = { binding.mainWatchFace.refreshTime() }
         randomizeWatchFace()
-        mainInstallOnWearablesButton.setOnClickListener { onInstallClick() }
+        binding.mainInstallOnWearablesButton.setOnClickListener { onInstallClick() }
     }
 
     override fun onStart() {
         super.onStart()
-        registerReceiver(timeChangedReceiver, timeChangedReceiver.intentFilter)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(
+                timeChangedReceiver,
+                timeChangedReceiver.intentFilter,
+                RECEIVER_NOT_EXPORTED
+            )
+        } else {
+            registerReceiver(
+                timeChangedReceiver,
+                timeChangedReceiver.intentFilter
+            )
+        }
     }
 
     override fun onResume() {
@@ -70,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun randomizeWatchFace() {
-        with(mainWatchFace) {
+        with(binding.mainWatchFace) {
             timeColor =
                 Random.nextListItem(getIntList(R.array.configuration_time_colors))
             isOutline = Random.nextBoolean()
@@ -90,14 +94,12 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_VIEW)
             .addCategory(Intent.CATEGORY_BROWSABLE)
             .setData(Uri.parse("market://details?id=${packageName}"))
-        connectedWearables.forEach {
-            RemoteIntent.startRemoteActivity(
-                applicationContext,
-                intent,
-                remoteResultReceiver,
-                it.id
+        RemoteActivityHelper(this)
+            .startRemoteActivity(intent)
+            .addListener(
+                { showSnackbar(R.string.check_wear_os) },
+                Executors.newSingleThreadExecutor()
             )
-        }
     }
 
     private fun findAllConnectedWearables() {

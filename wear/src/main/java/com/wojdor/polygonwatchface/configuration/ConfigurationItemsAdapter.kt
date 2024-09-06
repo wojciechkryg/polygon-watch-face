@@ -1,11 +1,12 @@
 package com.wojdor.polygonwatchface.configuration
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.wojdor.commonandroid.extension.inflate
-import com.wojdor.polygonwatchface.R
 import com.wojdor.polygonwatchface.base.BaseConfigurationItem
 import com.wojdor.polygonwatchface.base.BaseViewHolder
+import com.wojdor.polygonwatchface.databinding.ItemColorConfigurationBinding
+import com.wojdor.polygonwatchface.databinding.ItemSwitchConfigurationBinding
 import com.wojdor.polygonwatchface.domain.ColorConfigurationItem
 import com.wojdor.polygonwatchface.domain.ConfigurationType
 import com.wojdor.polygonwatchface.domain.SwitchConfigurationItem
@@ -21,11 +22,20 @@ class ConfigurationItemsAdapter :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        when (ConfigurationType.values()[viewType]) {
+        when (ConfigurationType.entries[viewType]) {
             ConfigurationType.COLOR ->
-                ColorConfigurationItemViewHolder(parent.inflate(R.layout.item_color_configuration))
+                ColorConfigurationItemViewHolder(
+                    ItemColorConfigurationBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                )
+
             ConfigurationType.SWITCH ->
-                SwitchConfigurationItemViewHolder(parent.inflate(R.layout.item_switch_configuration))
+                SwitchConfigurationItemViewHolder(
+                    ItemSwitchConfigurationBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                )
         }
 
     override fun getItemViewType(position: Int) = items[position].type.ordinal

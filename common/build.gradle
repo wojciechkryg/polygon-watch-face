@@ -1,7 +1,5 @@
-import com.wojdor.buildsrc.Application
 import com.wojdor.buildsrc.Library
 
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
@@ -9,6 +7,3 @@ dependencies {
     implementation Library.kotlin
     testImplementation Library.Test.junit
 }
-
-sourceCompatibility = Application.sourceCompatibility
-targetCompatibility = Application.targetCompatibility

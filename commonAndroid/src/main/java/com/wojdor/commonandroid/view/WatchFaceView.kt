@@ -44,11 +44,9 @@ class WatchFaceView(context: Context, attrs: AttributeSet?, defStyle: Int) :
         super.onMeasure(size, size)
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        canvas?.let {
-            it.drawCircle(width / 2F, height / 2F, width / 2F, dialPaint)
-            watchFace.drawWatchFace(it, time)
-        }
+    override fun onDraw(canvas: Canvas) {
+        canvas.drawCircle(width / 2F, height / 2F, width / 2F, dialPaint)
+        watchFace.drawWatchFace(canvas, time)
     }
 
     fun refreshTime() {

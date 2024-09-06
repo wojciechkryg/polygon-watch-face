@@ -1,10 +1,12 @@
 package com.wojdor.polygonwatchface.base
 
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import java.lang.ref.WeakReference
 
-internal class BaseEngineHandler(reference: BaseWatchFaceService.Engine) : Handler() {
+internal class BaseEngineHandler(reference: BaseWatchFaceService.Engine) :
+    Handler(Looper.getMainLooper()) {
 
     private val engine = WeakReference(reference)
 

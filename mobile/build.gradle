@@ -4,19 +4,28 @@ import com.wojdor.buildsrc.Module
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Application.compileSdk
+    namespace = "com.wojdor.polygonwatchface"
 
     defaultConfig {
         applicationId Application.id
-        minSdkVersion Application.minSdk
-        targetSdkVersion Application.targetSdk
+        minSdk Application.minSdk
+        targetSdk Application.targetSdk
+        compileSdk Application.compileSdk
         versionCode Application.Mobile.versionCode
         versionName Application.Mobile.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     buildTypes {
@@ -35,6 +44,7 @@ dependencies {
     implementation Library.Android.core
     implementation Library.Android.material
     implementation Library.Android.playServicesWearable
+    implementation Library.Android.remoteInteractions
     compileOnly Library.Android.wearable
     implementation Library.Android.wearableSupport
     implementation Library.kotlin

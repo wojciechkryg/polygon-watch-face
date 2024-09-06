@@ -5,14 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import com.wojdor.commonandroid.extension.getIntList
 import com.wojdor.polygonwatchface.R
-import kotlinx.android.synthetic.main.activity_choose_color.*
+import com.wojdor.polygonwatchface.databinding.ActivityChooseColorBinding
 
 class ChooseColorActivity : Activity() {
 
+    private lateinit var binding: ActivityChooseColorBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_color)
-        with(chooseColorItems) {
+        binding = ActivityChooseColorBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        with(binding.chooseColorItems) {
             isEdgeItemsCenteringEnabled = true
             setHasFixedSize(true)
             adapter = ChooseColorAdapter(getIntList(R.array.configuration_time_colors)) {
