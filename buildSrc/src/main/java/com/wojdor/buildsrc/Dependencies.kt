@@ -2,19 +2,19 @@ package com.wojdor.buildsrc
 
 object Application {
     object Mobile {
-        val versionCode = 100105
-        val versionName = "1.0.5"
+        val versionCode = 100106
+        val versionName = "1.0.6"
     }
 
     object Wear {
-        val versionCode = 105
-        val versionName = "1.0.5"
+        val versionCode = 106
+        val versionName = "1.0.6"
     }
 
     val id = "com.wojdor.polygonwatchface"
-    val compileSdk = 34
+    val compileSdk = 35
     val minSdk = 23
-    val targetSdk = 34
+    val targetSdk = 35
 }
 
 object Version {
